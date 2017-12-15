@@ -1,0 +1,58 @@
+<html><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/><title>Supported Compilers · JSON for Modern C++</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Supported Compilers · JSON for Modern C++"/><meta property="og:type" content="website"/><meta property="og:url" content="https://facebook.github.io/index.html"/><meta property="og:description" content="Though it&#x27;s 2017 already, the support for C++11 is still a bit sparse. Currently, the following compilers are known to work:"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/docusaurus.svg"/><h2 class="headerTitle">JSON for Modern C++</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/integration.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting Started</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/integration.html">Integration</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/compilers.html">Supported Compilers</a></li><li class="navListItem"><a class="navItem" href="/docs/notes.html">Notes</a></li></ul></div><div class="navGroup navGroupActive"><h3>Features</h3><ul><li class="navListItem"><a class="navItem" href="/docs/datatype.html">JSON as First-Class Datatype</a></li><li class="navListItem"><a class="navItem" href="/docs/stl.html">STL-like Access</a></li><li class="navListItem"><a class="navItem" href="/docs/member_functions.html">Member Functions</a></li><li class="navListItem"><a class="navItem" href="/docs/parsing.html">Parsing</a></li><li class="navListItem"><a class="navItem" href="/docs/serialization.html">Serialization</a></li><li class="navListItem"><a class="navItem" href="/docs/type_conversion.html">Type Conversion</a></li><li class="navListItem"><a class="navItem" href="/docs/binary_formats.html">Binary Exchange Formats</a></li><li class="navListItem"><a class="navItem" href="/docs/json_pointer.html">JSON Pointer</a></li><li class="navListItem"><a class="navItem" href="/docs/json_patch.html">JSON Patch</a></li><li class="navListItem"><a class="navItem" href="/docs/exceptions.html">Exceptions and Assertions</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Supported Compilers</h1></header><article><div><span><p>Though it's 2017 already, the support for C++11 is still a bit sparse. Currently, the following compilers are known to work:</p>
+<ul>
+<li>GCC 4.9 - 7.2 (and possibly later)</li>
+<li>Clang 3.4 - 5.0 (and possibly later)</li>
+<li>Intel C++ Compiler 17.0.2 (and possibly later)</li>
+<li>Microsoft Visual C++ 2015 / Build Tools 14.0.25123.0 (and possibly later)</li>
+<li>Microsoft Visual C++ 2017 / Build Tools 15.5.180.51428 (and possibly later)</li>
+</ul>
+<p>I would be happy to learn about other compilers/versions.</p>
+<h2><a class="anchor" aria-hidden="true" name="notes"></a><a href="#notes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Notes</h2>
+<ul>
+<li><p>GCC 4.8 does not work because of two bugs (<a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=55817">55817</a> and <a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=57824">57824</a>) in the C++11 support. Note there is a <a href="https://github.com/nlohmann/json/pull/212">pull request</a> to fix some of the issues.</p></li>
+<li><p>Android defaults to using very old compilers and C++ libraries. To fix this, add the following to your <code>Application.mk</code>. This will switch to the LLVM C++ library, the Clang compiler, and enable C++11 and other features disabled by default.</p>
+<pre><code class="hljs">APP_STL := c++_shared
+NDK_TOOLCHAIN_VERSION := clang3.6
+APP_CPPFLAGS += -frtti -fexceptions
+</code></pre>
+<p>The code compiles successfully with <a href="https://developer.android.com/ndk/index.html?hl=ml">Android NDK</a>, Revision 9 - 11 (and possibly later) and <a href="https://www.crystax.net/en/android/ndk">CrystaX's Android NDK</a> version 10.</p></li>
+<li><p>For GCC running on MinGW or Android SDK, the error <code>'to_string' is not a member of 'std'</code> (or similarly, for <code>strtod</code>) may occur. Note this is not an issue with the code,  but rather with the compiler itself. On Android, see above to build with a newer environment.  For MinGW, please refer to <a href="http://tehsausage.com/mingw-to-string">this site</a> and <a href="https://github.com/nlohmann/json/issues/136">this discussion</a> for information on how to fix this bug. For Android NDK using <code>APP_STL := gnustl_static</code>, please refer to <a href="https://github.com/nlohmann/json/issues/219">this discussion</a>.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" name="continuous-integration"></a><a href="#continuous-integration" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Continuous Integration</h2>
+<p>The following compilers are currently used in continuous integration at <a href="https://travis-ci.org/nlohmann/json">Travis</a> and <a href="https://ci.appveyor.com/project/nlohmann/json">AppVeyor</a>:</p>
+<table>
+<thead>
+<tr><th>Compiler</th><th>Operating System</th><th>Version String</th></tr>
+</thead>
+<tbody>
+<tr><td>GCC 4.9.4</td><td>Ubuntu 14.04.5 LTS</td><td>g++-4.9 (Ubuntu 4.9.4-2ubuntu1~14.04.1) 4.9.4</td></tr>
+<tr><td>GCC 5.4.1</td><td>Ubuntu 14.04.5 LTS</td><td>g++-5 (Ubuntu 5.4.1-2ubuntu1~14.04) 5.4.1 20160904</td></tr>
+<tr><td>GCC 6.3.0</td><td>Ubuntu 14.04.5 LTS</td><td>g++-6 (Ubuntu/Linaro 6.3.0-18ubuntu2~14.04) 6.3.0 20170519</td></tr>
+<tr><td>GCC 7.1.0</td><td>Ubuntu 14.04.5 LTS</td><td>g++-7 (Ubuntu 7.1.0-5ubuntu2~14.04) 7.1.0</td></tr>
+<tr><td>Clang 3.5.0</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 3.5.0-4ubuntu2~trusty2 (tags/RELEASE_350/final)</td></tr>
+<tr><td>Clang 3.6.2</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 3.6.2-svn240577-1~exp1 (branches/release_36)</td></tr>
+<tr><td>Clang 3.7.1</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 3.7.1-svn253571-1~exp1 (branches/release_37)</td></tr>
+<tr><td>Clang 3.8.0</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 3.8.0-2ubuntu3~trusty5 (tags/RELEASE_380/final)</td></tr>
+<tr><td>Clang 3.9.1</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 3.9.1-4ubuntu3~14.04.2 (tags/RELEASE_391/rc2)</td></tr>
+<tr><td>Clang 4.0.1</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 4.0.1-svn305264-1~exp1 (branches/release_40)</td></tr>
+<tr><td>Clang 5.0.0</td><td>Ubuntu 14.04.5 LTS</td><td>clang version 5.0.0-svn310902-1~exp1 (branches/release_50)</td></tr>
+<tr><td>Clang Xcode 6.4</td><td>Darwin Kernel Version 14.3.0 (OSX 10.10.3)</td><td>Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)</td></tr>
+<tr><td>Clang Xcode 7.3</td><td>Darwin Kernel Version 15.0.0 (OSX 10.10.5)</td><td>Apple LLVM version 7.3.0 (clang-703.0.29)</td></tr>
+<tr><td>Clang Xcode 8.0</td><td>Darwin Kernel Version 15.6.0</td><td>Apple LLVM version 8.0.0 (clang-800.0.38)</td></tr>
+<tr><td>Clang Xcode 8.1</td><td>Darwin Kernel Version 16.1.0 (macOS 10.12.1)</td><td>Apple LLVM version 8.0.0 (clang-800.0.42.1)</td></tr>
+<tr><td>Clang Xcode 8.2</td><td>Darwin Kernel Version 16.1.0 (macOS 10.12.1)</td><td>Apple LLVM version 8.0.0 (clang-800.0.42.1)</td></tr>
+<tr><td>Clang Xcode 8.3</td><td>Darwin Kernel Version 16.5.0 (macOS 10.12.4)</td><td>Apple LLVM version 8.1.0 (clang-802.0.38)</td></tr>
+<tr><td>Clang Xcode 9.0</td><td>Darwin Kernel Version 16.7.0 (macOS 10.12.6)</td><td>Apple LLVM version 9.0.0 (clang-900.0.37)</td></tr>
+<tr><td>Clang Xcode 9.1</td><td>Darwin Kernel Version 16.7.0 (macOS 10.12.6)</td><td>Apple LLVM version 9.0.0 (clang-900.0.38)</td></tr>
+<tr><td>Clang Xcode 9.2</td><td>Darwin Kernel Version 16.7.0 (macOS 10.12.6)</td><td>Apple LLVM version 8.1.0 (clang-900.0.39.2)</td></tr>
+<tr><td>Visual Studio 14 2015</td><td>Windows Server 2012 R2 (x64)</td><td>Microsoft (R) Build Engine version 14.0.25420.1, MSVC 19.0.24215.1</td></tr>
+<tr><td>Visual Studio 2017</td><td>Windows Server 2016</td><td>Microsoft (R) Build Engine version 15.5.180.51428, MSVC 19.12.25830.2</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="integration.html">← Integration</a><a class="docs-next button" href="notes.html">Notes →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/docusaurus.svg" alt="JSON for Modern C++" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/facebook/test-site" data-icon="octicon-star" data-count-href="/nlohmann/json/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2017 Niels Lohmann</section></footer></div></body></html>
