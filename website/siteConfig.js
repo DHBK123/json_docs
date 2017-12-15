@@ -20,7 +20,8 @@ const siteConfig = {
   tagline: 'What if JSON was part of C++?',
   url: 'https://facebook.github.io' /* your website url */,
   baseUrl: '/' /* base url for your project */,
-  projectName: 'test-site',
+  organizationName: 'nlohmann',
+  projectName: 'json_docs',
   headerLinks: [
     {doc: 'integration', label: 'Docs'},
     /* {doc: 'doc3', label: 'API'},
@@ -41,7 +42,7 @@ const siteConfig = {
   copyright:
     'Copyright © ' +
     new Date().getFullYear() +
-    ' Your Name or Your Company Name',
+    ' Niels Lohmann',
   // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
   // projectName: 'test-site', // or set an env variable PROJECT_NAME
   highlight: {
