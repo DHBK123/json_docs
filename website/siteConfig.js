@@ -19,7 +19,7 @@ const siteConfig = {
   title: 'JSON for Modern C++' /* title for your website */,
   tagline: 'What if JSON was part of C++?',
   url: 'https://facebook.github.io' /* your website url */,
-  baseUrl: '/' /* base url for your project */,
+  baseUrl: '/json_docs/' /* base url for your project */,
   organizationName: 'nlohmann',
   projectName: 'json_docs',
   headerLinks: [
