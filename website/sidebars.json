@@ -1,0 +1,6 @@
+{
+  "docs": {
+    "Getting Started": ["integration", "compilers", "notes"],
+    "Features": ["datatype", "stl", "member_functions", "parsing", "serialization", "type_conversion", "binary_formats", "json_pointer", "json_patch", "exceptions"]
+  }
+}
